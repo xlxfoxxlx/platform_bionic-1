@@ -289,6 +289,36 @@ LOCAL_SRC_FILES_EXCLUDE_arm += \
     upstream-freebsd/lib/msun/src/e_sqrtf.c \
     upstream-freebsd/lib/msun/src/s_floor.c \
 
+ifneq (,$(filter cortex-a53 cortex-a53.a57 kryo denver,$(TARGET_$(combo_2nd_arch_prefix)CPU_VARIANT)))
+LOCAL_SRC_FILES_arm += \
+    arm/ceil.S \
+    arm/floor_aarch32.S \
+    arm/fmax.S \
+    arm/fmin.S \
+    arm/nearbyint.S \
+    arm/rint.S \
+    arm/round.S \
+    arm/trunc.S \
+
+LOCAL_SRC_FILES_EXCLUDE_arm += \
+    arm/floor.S \
+    upstream-freebsd/lib/msun/src/s_ceil.c \
+    upstream-freebsd/lib/msun/src/s_ceilf.c \
+    upstream-freebsd/lib/msun/src/s_floorf.c \
+    upstream-freebsd/lib/msun/src/s_fmax.c \
+    upstream-freebsd/lib/msun/src/s_fmaxf.c \
+    upstream-freebsd/lib/msun/src/s_fmin.c \
+    upstream-freebsd/lib/msun/src/s_fminf.c \
+    upstream-freebsd/lib/msun/src/s_nearbyint.c \
+    upstream-freebsd/lib/msun/src/s_rint.c \
+    upstream-freebsd/lib/msun/src/s_rintf.c \
+    upstream-freebsd/lib/msun/src/s_round.c \
+    upstream-freebsd/lib/msun/src/s_roundf.c \
+    upstream-freebsd/lib/msun/src/s_trunc.c \
+    upstream-freebsd/lib/msun/src/s_truncf.c \
+
+endif #AArch32 CPU Variants
+
 endif
 
 # -----------------------------------------------------------------------------
@@ -297,10 +327,15 @@ endif
 LOCAL_SRC_FILES_arm64 += \
     arm64/ceil.S \
     arm64/fenv.c \
-    arm64/fma.S \
     arm64/floor.S \
+    arm64/fma.S \
+    arm64/fmax.S \
+    arm64/fmin.S \
     arm64/lrint.S \
+    arm64/lround.S \
+    arm64/nearbyint.S \
     arm64/rint.S \
+    arm64/round.S \
     arm64/sqrt.S \
     arm64/trunc.S \
 
@@ -311,14 +346,24 @@ LOCAL_SRC_FILES_EXCLUDE_arm64 += \
     upstream-freebsd/lib/msun/src/s_ceilf.c \
     upstream-freebsd/lib/msun/src/s_fma.c \
     upstream-freebsd/lib/msun/src/s_fmaf.c \
+    upstream-freebsd/lib/msun/src/s_fmax.c \
+    upstream-freebsd/lib/msun/src/s_fmaxf.c \
+    upstream-freebsd/lib/msun/src/s_fmin.c \
+    upstream-freebsd/lib/msun/src/s_fminf.c \
     upstream-freebsd/lib/msun/src/s_floor.c \
     upstream-freebsd/lib/msun/src/s_floorf.c \
     upstream-freebsd/lib/msun/src/s_llrint.c \
     upstream-freebsd/lib/msun/src/s_llrintf.c \
+    upstream-freebsd/lib/msun/src/s_llround.c \
+    upstream-freebsd/lib/msun/src/s_llroundf.c \
     upstream-freebsd/lib/msun/src/s_lrint.c \
     upstream-freebsd/lib/msun/src/s_lrintf.c \
+    upstream-freebsd/lib/msun/src/s_lround.c \
+    upstream-freebsd/lib/msun/src/s_lroundf.c \
     upstream-freebsd/lib/msun/src/s_rint.c \
     upstream-freebsd/lib/msun/src/s_rintf.c \
+    upstream-freebsd/lib/msun/src/s_round.c \
+    upstream-freebsd/lib/msun/src/s_roundf.c \
     upstream-freebsd/lib/msun/src/s_trunc.c \
     upstream-freebsd/lib/msun/src/s_truncf.c \
 
